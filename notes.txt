@@ -1,1 +1,22 @@
 These are my notes.
+
+Github:
+
+There are 3 steps to adding code to github. git add, git commit, and git push.
+For this analogy, I'll be comparing the github repository to a blog, and the code thats pushed to it to text.
+
+Git Add: 
+
+This command adds whatever code you select into the git history. The way I understand it,
+this is analagous to adding text to a word document.
+
+Git commit:
+
+This command actually takes a snapshot of the stuff that you've added, and lets you add a message
+saying what you actually added. This is analagous to saving the file that you've just edited.
+
+Git push:
+
+This command actually pushes what you've just saved to your github repository.
+This could be analagous to actually posting what you've just typed and saved in that document
+to your own personal blog.
