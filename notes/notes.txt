@@ -20,3 +20,5 @@ Git push:
 This command actually pushes what you've just saved to your github repository.
 This could be analagous to actually posting what you've just typed and saved in that document
 to your own personal blog.
+
+I'm editing this
