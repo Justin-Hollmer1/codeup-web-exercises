@@ -1,0 +1,13 @@
+First step after creating a file:
+
+Steps 1 and 2 are to initialize
+1: git init (Will initialize git repository)
+2: git remote add origin <ssh key goes here>
+
+Steps 3 -  are to push things to github
+
+3: git add . (The dot means to add everything in the current directory)
+4: git commit -m "<message goes here>"
+5: git status (This can be done at any point, this is just getting the status of where things are at.)
+6: git branch (You can do this whenever you want, This lets you know what branch you're operating on, it makes sure you push to the correct branch)
+7: git push origin <branch>  (This actually pushes everything up to github.
