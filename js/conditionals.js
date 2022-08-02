@@ -175,14 +175,17 @@ alert("Your lucky number is " + luckyNumber + ". Your new total is $" + calculat
     }
     function isEven(number) {
         if (number % 2 === 0) {
+            alert("The number is even")
             return true;
         } else {
+            alert("The number is odd")
             return false;
         }
     }
     function addOneHundred(number) {
         return number + 100;
     }
+    alert("Your number plus 100 is " + addOneHundred(parseInt(userNumber)));
     function isPositive(number) {
         if (number > 0) {
             return true;
@@ -190,4 +193,5 @@ alert("Your lucky number is " + luckyNumber + ". Your new total is $" + calculat
             return false;
         }
     }
+
 })();
