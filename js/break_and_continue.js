@@ -21,3 +21,11 @@ while (condition < 1) {
     }
     condition += 1;
 }
+
+var shapes = ["circle", "square", "rectangle", "diamond"];
+console.log(shapes);
+console.log(shapes[1]);
+
+shapes.forEach(function(shape) {
+    shape = shape
+});
