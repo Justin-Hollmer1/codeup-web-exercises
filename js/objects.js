@@ -17,6 +17,7 @@
             lastName: "Hollmer"
         }
         console.log(person);
+
     /**
      * TODO:
      * Add a sayHello method to the person object that returns a greeting using
@@ -73,50 +74,50 @@
      * > console.log(books[0].author.lastName) // "Adams"
      */
 
-    var books = [
-        {
-            title: "The Art of War",
-            author: {
-                firstName: "Sun",
-                lastName: "Tzu"
-            }
-        },
-        {
-            title: "The 48 Laws of Power",
-            author: {
-                firstName: "Robert",
-                lastName: "Green",
-            }
-        },
-        {
-            title: "One Million Followers",
-            author: {
-                firstName: "Brendan",
-                lastName: "Kane"
-            }
-        },
-        {
-            title: "33 Strategies of War",
-            author: {
-                firstName: "Robert",
-                lastName: "Green"
-            }
-        },
-        {
-            title: "Can't Hurt Me",
-            author: {
-                firstName: "David",
-                lastName: "Goggins"
-            }
-        },
-        {
-            title: "Dicipline Equals Freedom",
-            author: {
-                firstName: "Jocko",
-                lastName: "Willink"
-            }
-        }
-    ]
+    // var books = [
+    //     {
+    //         title: "The Art of War",
+    //         author: {
+    //             firstName: "Sun",
+    //             lastName: "Tzu"
+    //         }
+    //     },
+    //     {
+    //         title: "The 48 Laws of Power",
+    //         author: {
+    //             firstName: "Robert",
+    //             lastName: "Green",
+    //         }
+    //     },
+    //     {
+    //         title: "One Million Followers",
+    //         author: {
+    //             firstName: "Brendan",
+    //             lastName: "Kane"
+    //         }
+    //     },
+    //     {
+    //         title: "33 Strategies of War",
+    //         author: {
+    //             firstName: "Robert",
+    //             lastName: "Green"
+    //         }
+    //     },
+    //     {
+    //         title: "Can't Hurt Me",
+    //         author: {
+    //             firstName: "David",
+    //             lastName: "Goggins"
+    //         }
+    //     },
+    //     {
+    //         title: "Dicipline Equals Freedom",
+    //         author: {
+    //             firstName: "Jocko",
+    //             lastName: "Willink"
+    //         }
+    //     }
+    // ]
 
     /**
      * TODO:
@@ -144,9 +145,9 @@
      */
 
 
-        books.forEach(function(book) {
-            console.log(`Book # ${books.indexOf(book) + 1}\nTitle: ${book.title}\nAuthor: ${book.author.firstName} ${book.author.lastName}`);
-        })
+        // books.forEach(function(book) {
+        //     console.log(`Book # ${books.indexOf(book) + 1}\nTitle: ${book.title}\nAuthor: ${book.author.firstName} ${book.author.lastName}`);
+        // })
     /**
      * Bonus:
      * - Create a function named `createBook` that accepts a title and author
@@ -157,6 +158,36 @@
      *   outputs the information described above. Refactor your loop to use your
      *   `showBookInfo` function.
      */
+    var books = [];
 
+    function createBook(bookTitle, authorFirstName, authorLastName) {
+        var book = {
+            title: bookTitle,
+            author: {
+                firstName: authorFirstName,
+                lastName: authorLastName
+            }
+        }
+        books.push(book);
+        return book;
+    }
+    createBook("The Art of War", "Sun", "Tzu")
+    createBook("The 48 Laws of Power", "Robert", "Green")
+    createBook("One Million Followers","Brendan","Kane")
+    createBook("33 Strategies of War","Robert","Green")
+    createBook("Can't Hurt Me","David","Goggins")
+    createBook("Dicipline Equals Freedom","Jocko","Willink")
+
+    console.log(books);
+
+    function showBookInfo(book) {
+        console.log(`Book # ${books.indexOf(book) + 1}`)
+        console.log(`Title: ${book.title}`)
+        console.log(`Name: ${book.author.firstName} ${book.author.lastName}`)
+    }
+
+    books.forEach(function(book) {
+        showBookInfo(book);
+    })
 
 })();
