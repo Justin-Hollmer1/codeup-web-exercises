@@ -1,4 +1,40 @@
 .fancy-header {
-    color: purple;
+    color: #6a18de;
     text-decoration: underline;
+    text-align: center;
+}
+
+ul {
+    list-style: square;
+}
+
+ol {
+    list-style: upper-alpha;
+}
+
+body {
+    background-color: #058d96;
+    background-image: url(https://img.freepik.com/free-vector/stylish-hexagonal-line-pattern-background_1017-19742.jpg?size=626&ext=jpg);
+    font-family: fantasy, serif, sans-serif, "Times New Roman";
+}
+
+table {
+    border: 1px solid black;
+    background-color: aliceblue;
+}
+
+td {
+    border: 1px solid black;
+    text-align: center;
+    padding: 5px 15px;
+}
+
+a:link {
+    color: blue;
+}
+a:visited {
+    color: blueviolet;
+}
+a:hover {
+    color: red;
 }
