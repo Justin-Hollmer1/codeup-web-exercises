@@ -79,5 +79,23 @@ a {
 
 .profile-header {
     position: absolute;
-    top: 1em;
+    top: 15em;
+}
+
+.profile-form {
+    float: right;
+}
+
+.profile-details {
+    width: 25%;
+    margin: 0px 0.5em;
+}
+
+.timeline {
+    width: 50%;
+    margin: 0px 0.5em;
+}
+.who-to-follow {
+    width: 25%;
+    margin: 0px 0.5em;
 }
