@@ -1,22 +1,9 @@
-.flexbox-container {
-    display: flex;
-}
-
-.flexbox-item {
-    width: 200px;
-    margin: 10px;
-    border: 3px solid #333333;
-    background-color: #dfdfdf;
-}
-
-.flexbox-item-1 {
-    min-height: 100px;
-}
-
-.flexbox-item-2 {
-    min-height: 200px;
-}
-
-.flexbox-item-3 {
-    min-height: 300px;
+/*This line is for if it's above 800 pixels*/
+@media screen and (max-width: 500px) {
+    body {
+        display: flex;
+    }
+    div {
+        color: red;
+    }
 }
