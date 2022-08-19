@@ -19,7 +19,7 @@ a {
 
 .container {
     max-width: 750px;
-    height = 100%;
+    height: 100%;
     margin: 0 auto;
     /* TODO: Make this a flex container and align it's items to the center*/
     display: flex;
