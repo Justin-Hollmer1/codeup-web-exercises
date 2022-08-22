@@ -1,0 +1,54 @@
+.jumbotron {
+    background-image: url("../img/pizza.png");
+    height: 346px;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+}
+
+.jumbotron-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(217, 217, 217, 0.75);
+    height: 100px;
+    width: 100%;
+}
+.jumbotron-title h2 {
+    font-size: 4em;
+}
+
+.form-title {
+    background-color: blue;
+    color: white;
+    border-radius: 2px;
+    padding: 0.5em;
+}
+
+.pizza-background-container {
+    border: 1px solid grey;
+    border-radius: 2px;
+}
+
+.build-pizza-form-header {
+    background-color: rgb(132, 132, 132, 0.2);
+    border: 1px solid grey;
+}
+
+.describe-pizza-options {
+    border: 1px solid grey;
+}
+
+.actual-pizza-options {
+    border: 1px solid grey;
+    text-indent: 0.5em;
+}
+
+.spacing {
+    border-radius: 2px;
+    padding: 0.2em;
+}
+
+.set-margin {
+    margin: 1em 0em;
+}
