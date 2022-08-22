@@ -52,3 +52,42 @@
 .set-margin {
     margin: 1em 0em;
 }
+
+footer {
+    display: flex;
+    justify-content: flex-end;
+    background-color: rgb(132, 132, 132, 0.2);
+    align-items: center;
+    height: 5em;
+    margin: 0;
+}
+
+footer a:link {
+    color: white;
+    text-decoration: none;
+}
+
+.next-button {
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+    margin-right: 1em;
+    margin-top: 0;
+    padding: 0.5em;
+}
+
+.sign-up-box {
+    margin: 1em;
+    color: grey;
+}
+
+.sign-up-box a:link {
+    color: grey;
+    text-decoration: none;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

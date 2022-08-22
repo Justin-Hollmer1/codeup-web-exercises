@@ -5,6 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Pizza World Order Screen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- Your custom css styles go here -->
     <link rel="stylesheet" href="../css/custom.css">
@@ -16,7 +17,8 @@
 </head>
 <body>
 <!-- Main page content -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Pizza World</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,7 +44,10 @@
         </div>
     </div>
 </nav>
-
+    <span class="sign-up-box">
+        <a href="#"><i class="fa-solid fa-user"></i> Sign Up!</a>
+    </span>
+</header>
 <div class="container">
     <div class="jumbotron">
         <div class="jumbotron-title">
@@ -55,6 +60,7 @@
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="size-and-crust-tab" data-bs-toggle="tab" data-bs-target="#size-and-crust" type="button" role="tab" aria-controls="size-and-crust" aria-selected="true">Size and Crust</button>
         </li>
+
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="cheese-and-sauce-tab" data-bs-toggle="tab" data-bs-target="#cheese-and-sauce" type="button" role="tab" aria-controls="cheese-and-sauce" aria-selected="false">Cheese and Sauce</button>
         </li>
@@ -62,8 +68,14 @@
             <button class="nav-link" id="toppings-tab" data-bs-toggle="tab" data-bs-target="#toppings" type="button" role="tab" aria-controls="toppings" aria-selected="false">Toppings</button>
         </li>
     </ul>
+
+
     <div class="tab-content" id="myTabContent">
+
+        <!--            Size and crust Tab            -->
+
         <div class="tab-pane fade show active" id="size-and-crust" role="tabpanel" aria-labelledby="size-and-crust-tab">
+
             <div class="pizza-background-container">
                 <div class="container form-title">
                     Choose size and crust
@@ -108,74 +120,181 @@
                             Large (14")
                         </label>
                     </div>
+                </div>
             </div>
+
+            <footer>
+                <div class="next-button">
+                    <a href="#">Next Step ></a>
+                </div>
+            </footer>
         </div>
 
-
-
-
-
-
-            Test
-
-
-
-
-
+        <!--            Cheese and sauce tab            -->
 
         <div class="tab-pane fade" id="cheese-and-sauce" role="tabpanel" aria-labelledby="cheese-and-sauce-tab">
             <div class="pizza-background-container">
                 <div class="container form-title">
-                    Choose cheese and sauce
+                    Choose Cheese and Sauce
                 </div>
                 <div class="container set-margin">
 
                     <div class="build-pizza-form-header spacing">
-                        Hand Tossed
+                        Cheese
                     </div>
                     <div class="describe-pizza-options spacing">
-                        Garlic seasoned with a rich, buttery taste.
+                        How Much?
                     </div>
-                    <div class="actual-pizza-options spacing">
-                        <input class="form-check-input" type="radio" name="pizza-size" id="small-hand-tossed" value="small-hand-tossed" checked>
-                        <label class="form-check-label" for="small-hand-tossed">
-                            Small (10")
-                        </label>
+                    <div class="container spacing actual-pizza-options">
+                        <select class="form-select" aria-label="Default select example">
+                            <option value="less">Less</option>
+                            <option value="normal" selected>Normal</option>
+                            <option value="extra">Extra</option>
+                            <option value="way-extra">Way Extra</option>
+                        </select>
                     </div>
-                    <div class="actual-pizza-options spacing">
-                        <input class="form-check-input" type="radio" name="pizza-size" id="medium-hand-tossed" value="medium-hand-tossed" checked>
-                        <label class="form-check-label" for="medium-hand-tossed">
-                            Medium (12")
-                        </label>
-                    </div>
+
                 </div>
                 <div class="container set-margin">
                     <div class="build-pizza-form-header spacing">
-                        Crispy Thin
+                        Sauce
                     </div>
                     <div class="describe-pizza-options spacing">
-                        Thin enough for optimum crispy to crunchy ratio.
+                        What Type?
                     </div>
-                    <div class="actual-pizza-options spacing">
-                        <input class="form-check-input" type="radio" name="pizza-size" id="medium-thin-crust" value="medium-thin-crust" checked>
-                        <label class="form-check-label" for="small-hand-tossed">
-                            Medium (12")
-                        </label>
+                    <div class="container spacing actual-pizza-options">
+                        <select class="form-select" aria-label="Default select example">
+                            <option value="tomato" selected>Tomato</option>
+                            <option value="garlic">Garlic</option>
+                            <option value="barbeque">Barbeque</option>
+                            <option value="pesto">Pesto</option>
+                        </select>
                     </div>
-                    <div class="actual-pizza-options spacing">
-                        <input class="form-check-input" type="radio" name="pizza-size" id="large-thin-crust" value="large-thin-crust" checked>
-                        <label class="form-check-label" for="medium-hand-tossed">
-                            Large (14")
-                        </label>
+
+                    <div class="describe-pizza-options spacing">
+                        How Much?
+                    </div>
+                    <div class="container spacing actual-pizza-options">
+                        <select class="form-select" aria-label="Default select example">
+                            <option value="less">Less</option>
+                            <option value="normal" selected>Normal</option>
+                            <option value="extra">Extra</option>
+                            <option value="way-extra">Way Extra</option>
+                        </select>
                     </div>
                 </div>
             </div>
+
+            <footer>
+                <span class="next-button" style="margin-right: 0;">
+                    <a href="#">< Previous</a>
+                </span>
+                <span class="next-button">
+                    <a href="#">Next ></a>
+                </span>
+            </footer>
         </div>
+
+        <!--            Toppings tab            -->
+
         <div class="tab-pane fade" id="toppings" role="tabpanel" aria-labelledby="toppings-tab">
-            And finally, a third test
+
+
+            <div class="pizza-background-container">
+                <div class="container form-title">
+                    Choose Toppings
+                </div>
+                <div class="container set-margin">
+
+                    <div class="build-pizza-form-header spacing">
+                        Choose Meats
+                    </div>
+
+                    <div class="actual-pizza-options spacing">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="meat" id="beef">
+                            <label class="form-check-label" for="beef">
+                                Beef
+                            </label>
+                        </div>
+                    </div>
+                    <div class="actual-pizza-options spacing">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="meat" id="ham">
+                            <label class="form-check-label" for="ham">
+                                Ham
+                            </label>
+                        </div>
+                    </div>
+                    <div class="actual-pizza-options spacing">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="meat" id="philly-steak">
+                            <label class="form-check-label" for="philly-steak">
+                                Philly Steak
+                            </label>
+                        </div>
+                    </div>
+                    <div class="actual-pizza-options spacing">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="meat" id="bacon">
+                            <label class="form-check-label" for="bacon">
+                                Bacon
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="container set-margin">
+                    <div class="build-pizza-form-header spacing">
+                        Choose Non-Meats
+                    </div>
+                    <div class="actual-pizza-options spacing">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="non-meats" id="green-peppers">
+                            <label class="form-check-label" for="green-peppers">
+                                Green Peppers
+                            </label>
+                        </div>
+                    </div>
+                    <div class="actual-pizza-options spacing">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="non-meats" id="mushrooms">
+                            <label class="form-check-label" for="mushrooms">
+                                Mushrooms
+                            </label>
+                        </div>
+                    </div>
+                    <div class="actual-pizza-options spacing">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="non-meats" id="onions">
+                            <label class="form-check-label" for="onions">
+                                Onions
+                            </label>
+                        </div>
+                    </div>
+                    <div class="actual-pizza-options spacing">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="non-meats" id="jalapeno-peppers">
+                            <label class="form-check-label" for="jalapeno-peppers">
+                                Jalapeno Peppers
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <div class="next-button">
+                    <a href="#">Checkout <i class="fa-solid fa-cart-shopping"></i></a>
+                </div>
+            </footer>
         </div>
+
     </div>
 </div>
+
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
