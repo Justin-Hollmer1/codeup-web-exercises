@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Browser Object Model Lecture</title>
+</head>
+<body>
+
+<script>
+
+    'use strict';
+
+    // this code will produce a console log every second
+    // when count >= max, the interval is cancelled, and the logging will stop
+
+    var count = 0;
+    var max = 10;
+    var interval = 1000; // interval time in milliseconds
+
+    var intervalId = setInterval(function () {
+        if (count >= max) {
+            clearInterval(intervalId);
+            console.log('All done');
+        } else {
+            count++;
+            console.log('Repeating this line ' + count);
+        }
+    }, interval);
+
+    'use strict';
+
+    var delay = 5000; // delay time in milliseconds
+
+    var timeoutId = setTimeout(function () {
+        // alert('Here is a delayed hello!');
+        // location.reload()
+        location = "https://java.codeup.com/javascript-i/bom-and-dom/bom/"
+    }, delay);
+
+    // to cancel the timeout, you can call
+    // clearTimeout(timeoutId);
+    // prior to the delay expiring
+
+</script>
+
+</body>
+</html>
