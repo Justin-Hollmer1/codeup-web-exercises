@@ -7,7 +7,7 @@
 <h1>Konami Code</h1>
 <p id="lives"></p>
 
-<input id="cheatCode" name="cheatCode">
+<button id="cheatCode" name="cheatCode">Click me to enter cheat code</button>
 <input id="submit" name="submit" type="submit">
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
@@ -15,16 +15,63 @@
     "use strict";
     var lives = 3;
     var holder = "";
-    var correctCode = "38384040373937396665"
-    $("#submit").click(function() {
-        var userInput = $("#cheatCode").val();
+    var correctCode = "3838404037393739666513"
+    var correctCode2 = "38384040373937396665"
+    $("#lives").html("lives: " + lives);
 
-        if (testVariable == correctCode) {
-            lives += 30;
-            alert("You've entered the Kunami Code! 30 Lives awarded")
-            $("#lives").html("Lives: " + lives);
-        }
-    })
+    $("#cheatCode").click(function() {
+        var testVariable = "";
+        $("#cheatCode").keyup(function(event) {
+            console.log($("cheatCode").keyCode);
+            testVariable += event.keyCode;
+            console.log(testVariable);
+            if (event.keyCode == "37") {
+                console.log("The left key is pressed");
+            }
+            else if (event.keyCode == "38") {
+                console.log("The up key is pressed");
+            }
+            else if (event.keyCode == "39") {
+                console.log("The right key is pressed");
+            }
+            else if (event.keyCode == "40") {
+                console.log("The down key is pressed");
+            }
+        });
+
+        $("#submit").click(function() {
+            var userInput = $("#cheatCode").val();
+            console.log(correctCode)
+            console.log(testVariable)
+            if (testVariable == correctCode || testVariable == correctCode2) {
+                lives += 30;
+                alert("You've entered the Kunami Code! 30 Lives awarded");
+                $("#lives").html("Lives: " + lives);
+            }
+        });
+
+        $("#cheatCode").keyup(function(event) {
+            if (event.keyCode == 13 && (testVariable == correctCode || testVariable == correctCode2)) {
+                var userInput = $("#cheatCode").val();
+                console.log(correctCode)
+                console.log(testVariable)
+                if (testVariable == correctCode || testVariable == correctCode2) {
+                    lives += 30;
+                    alert("You've entered the Kunami Code! 30 Lives awarded");
+                    $("#lives").html("Lives: " + lives);
+                }
+            }
+        });
+    });
+
+
+
+
+
+
+
+
+
 
     // $("#cheatCode").keyup(function(event) {
     //     console.log(event.keyCode);
@@ -34,24 +81,7 @@
     // 38 - up
     // 39 - right
     // 40 - down
-    var testVariable = "";
-    $("#cheatCode").keyup(function(event) {
-        console.log($("cheatCode").keyCode);
-        testVariable += event.keyCode;
-        console.log(testVariable);
-        if (event.keyCode == "37") {
-            console.log("The left key is pressed");
-        }
-        else if (event.keyCode == "38") {
-            console.log("The up key is pressed");
-        }
-        else if (event.keyCode == "39") {
-            console.log("The right key is pressed");
-        }
-        else if (event.keyCode == "40") {
-            console.log("The down key is pressed");
-        }
-    })
+
 
 </script>
 </body>
