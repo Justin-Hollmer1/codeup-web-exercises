@@ -1,9 +1,14 @@
-$("li").css("font-size", "20px");
+$("h1").click(function () {
+    $(this).css("color", "red");
+})
 
-$("li, p, h1").css("background-color", "yellow");
+$("p").dblclick(function() {
+    $(this).css("font-size", "18px");
+})
 
-var headings = $("h1");
-
-for (let i = 0; i < headings.length; i++) {
-    alert(headings[i].innerHTML);
-}
+$("li").hover(function() {
+    $(this).css("color", "red");
+    },
+    function() {
+    $(this).css("color", "black");
+})
