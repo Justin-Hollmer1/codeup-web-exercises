@@ -15,13 +15,15 @@
     "use strict";
     var lives = 3;
     var holder = "";
-    var correctCode = "3838404037393739666513"
-    var correctCode2 = "38384040373937396665"
+    var correctCode = "38384040373937396665"
+    var correctCode2 = "3838404037393739666513"
+    var button = $("#cheatCode");
     $("#lives").html("lives: " + lives);
 
-    $("#cheatCode").click(function() {
+    //Start of testing function
+    button.click(function() {
         var testVariable = "";
-        $("#cheatCode").keyup(function(event) {
+        button.keyup(function(event) {
             console.log($("cheatCode").keyCode);
             testVariable += event.keyCode;
             console.log(testVariable);
@@ -38,23 +40,18 @@
                 console.log("The down key is pressed");
             }
         });
+        //End of testing function
 
         $("#submit").click(function() {
-            var userInput = $("#cheatCode").val();
-            console.log(correctCode)
-            console.log(testVariable)
-            if (testVariable == correctCode || testVariable == correctCode2) {
+            if (testVariable == correctCode) {
                 lives += 30;
                 alert("You've entered the Kunami Code! 30 Lives awarded");
                 $("#lives").html("Lives: " + lives);
             }
         });
 
-        $("#cheatCode").keyup(function(event) {
+        button.keyup(function(event) {
             if (event.keyCode == 13 && (testVariable == correctCode || testVariable == correctCode2)) {
-                var userInput = $("#cheatCode").val();
-                console.log(correctCode)
-                console.log(testVariable)
                 if (testVariable == correctCode || testVariable == correctCode2) {
                     lives += 30;
                     alert("You've entered the Kunami Code! 30 Lives awarded");
