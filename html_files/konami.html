@@ -13,18 +13,19 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script>
     "use strict";
+    // Declaring variables
     var lives = 3;
     var holder = "";
     var correctCode = "38384040373937396665"
     var correctCode2 = "3838404037393739666513"
     var button = $("#cheatCode");
-    $("#lives").html("lives: " + lives);
+    var livesCounter = $("#lives")
+    livesCounter.html("lives: " + lives);
 
     //Start of testing function
     button.click(function() {
         var testVariable = "";
         button.keyup(function(event) {
-            console.log($("cheatCode").keyCode);
             testVariable += event.keyCode;
             console.log(testVariable);
             if (event.keyCode == "37") {
@@ -42,21 +43,22 @@
         });
         //End of testing function
 
+        //This function tests if the code is correct when the submit button is pressed.
         $("#submit").click(function() {
             if (testVariable == correctCode) {
                 lives += 30;
                 alert("You've entered the Kunami Code! 30 Lives awarded");
-                $("#lives").html("Lives: " + lives);
+                livesCounter.html("Lives: " + lives);
             }
         });
 
+
+        //This event checks if the code is correct when the enter key is pressed
         button.keyup(function(event) {
-            if (event.keyCode == 13 && (testVariable == correctCode || testVariable == correctCode2)) {
-                if (testVariable == correctCode || testVariable == correctCode2) {
-                    lives += 30;
-                    alert("You've entered the Kunami Code! 30 Lives awarded");
-                    $("#lives").html("Lives: " + lives);
-                }
+            if (event.keyCode == 13 && testVariable == correctCode2) {
+                lives += 30;
+                alert("You've entered the Kunami Code! 30 Lives awarded");
+                livesCounter.html("Lives: " + lives);
             }
         });
     });
@@ -69,10 +71,6 @@
 
 
 
-
-    // $("#cheatCode").keyup(function(event) {
-    //     console.log(event.keyCode);
-    //     console.log($("#cheatCode").val())
     // })
     // 37 - left
     // 38 - up
