@@ -14,10 +14,10 @@
 <table id="products">
     <thead>
     <tr>
-        <th>Title</th>
-        <th>Quantity</th>
-        <th>Price</th>
-        <th>Categories</th>
+<!--        <th>Title</th>-->
+<!--        <th>Quantity</th>-->
+<!--        <th>Price</th>-->
+<!--        <th>Categories</th>-->
     </tr>
 
     </thead>
@@ -32,11 +32,16 @@
         // TODO: Create an AJAX GET request for the file under data/inventory.json
 
             $.get("/../data/inventory.json").done(function(data) {
-                console.log(data);
-                tableData.innerHTML = loopThroughJSON(data);
+                // console.log(data);
+                var tableData = document.querySelector("#insertProducts");
+                setTimeout(function() {
+                    tableData.innerHTML = loopThroughJSON(data);
+                }, 1000)
+
             }).fail(function() {
                 console.log("Something went wrong");
             });
+
 
 
         // TODO: Take the data from inventory.json and append it to the products table
@@ -46,13 +51,22 @@
 
         function appendToHtml(theData) {
             var html = "<tr>";
+
             html += "<td>" + theData.title + "</td>";
+
             html += "<td>" + theData.quantity + "</td>";
+
             html += "<td>" + theData.price + "</td>";
+
             html += "<td>" + theData.categories + "</td>";
+            console.log(html)
             html += "</tr>"
             return html;
         }
+
+        setTimeout(function() {
+            console.log("This makes no sense")
+        }, 1000)
 
         function loopThroughJSON(data) {
             var html;
@@ -65,7 +79,8 @@
 
 
 
-        var tableData = document.querySelector("#insertProducts");
+
+
     })();
 </script>
 
