@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>This is a blog</h1>
+    <hr>
+    <div id="posts">
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    "use strict";
+    var putDataHere = document.querySelector("#posts");
+    function getData() {
+        $.get("/../data/blog.json").done(function(data) {
+            // console.log("I got the data")
+            // console.log(data);
+            putDataHere.innerHTML = (passIntoHTML(data));
+        }).fail(function() {
+            console.log("Something went wrong");
+        })
+    }
+
+    function turnToHTML(rawData) {
+        var html = "";
+        html += "<h2>" + rawData.title + "</h2>";
+        html += "<p>" + rawData.content + "</p>";
+        html += "<ul>Categories</ul>";
+        for (let i = 0; i < rawData.categories.length; i++) {
+            html += "<li>" + rawData.categories[i] + "</li>"
+        }
+        html += "<br>"
+        html += "<span>Date: " + rawData.date + "</span>";
+        console.log(html)
+        return html;
+    }
+
+    function passIntoHTML(data) {
+        console.log(data)
+        var html = "";
+        for (let i = 0; i < data.length; i++) {
+            html += turnToHTML(data[i]);
+            html += "<hr>"
+        }
+        return html;
+    }
+
+
+    getData()
+
+</script>
+</body>
+</html>

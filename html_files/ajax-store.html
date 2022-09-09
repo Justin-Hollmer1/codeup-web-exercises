@@ -10,6 +10,8 @@
 <body>
 
 <h1>My Tool Store</h1>
+
+<button id="refresh-button">Refresh Data</button>
 <table id="products">
     <thead>
     <tr>
@@ -30,44 +32,61 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
 <script>
-    (function() {
-        "use strict";
-        // TODO: Create an AJAX GET request for the file under data/inventory.json
+    "use strict";
+    // TODO: Create an AJAX GET request for the file under data/inventory.json
 
-        var tableData = document.querySelector("#insertProducts");
+    var tableData = document.querySelector("#insertProducts");
 
+    $.get("/../data/inventory.json").done(function(data) {
+        console.log(data);
+        tableData.innerHTML = loopThroughJSON(data);
+    }).fail(function() {
+        console.log("Something went wrong");
+    });
+
+
+    // TODO: Take the data from inventory.json and append it to the products table
+    //       HINT: Your data should come back as a JSON object; use console.log() to inspect
+    //             its contents and fields
+    //       HINT: You will want to target #insertProducts for your new HTML elements
+
+    function appendToHtml(theData) {
+        var html = "<tr>";
+        html += "<td>" + theData.title + "</td>";
+        html += "<td>" + theData.quantity + "</td>";
+        html += "<td>" + theData.price + "</td>";
+        html += "<td>" + theData.categories + "</td>";
+        html += "</tr>"
+        return html;
+    }
+
+    function loopThroughJSON(data) {
+        var html = "";
+        for (let i = 0; i < data.length; i++) {
+            html += appendToHtml(data[i]);
+        }
+        console.log(html)
+        return html;
+    }
+
+
+//    Create a refresh button
+
+    var refreshButton = $("#refresh-button");
+    refreshButton.click(function() {
         $.get("/../data/inventory.json").done(function(data) {
-            console.log(data);
             tableData.innerHTML = loopThroughJSON(data);
-        }).fail(function() {
-            console.log("Something went wrong");
+            console.log("The page has been refreshed")
         });
+    });
 
+    setInterval(function() {
+        $.get("/../data/inventory.json").done(function(data) {
+            tableData.innerHTML = loopThroughJSON(data);
+            console.log("It's been 5 seconds")
+        });
+    }, 5000);
 
-        // TODO: Take the data from inventory.json and append it to the products table
-        //       HINT: Your data should come back as a JSON object; use console.log() to inspect
-        //             its contents and fields
-        //       HINT: You will want to target #insertProducts for your new HTML elements
-
-        function appendToHtml(theData) {
-            var html = "<tr>";
-            html += "<td>" + theData.title + "</td>";
-            html += "<td>" + theData.quantity + "</td>";
-            html += "<td>" + theData.price + "</td>";
-            html += "<td>" + theData.categories + "</td>";
-            html += "</tr>"
-            return html;
-        }
-
-        function loopThroughJSON(data) {
-            var html = "";
-            for (let i = 0; i < data.length; i++) {
-                html += appendToHtml(data[i]);
-            }
-            console.log(html)
-            return html;
-        }
-    })();
 </script>
 </body>
 </html>
