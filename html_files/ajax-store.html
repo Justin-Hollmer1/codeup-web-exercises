@@ -76,14 +76,16 @@
     refreshButton.click(function() {
         $.get("/../data/inventory.json").done(function(data) {
             tableData.innerHTML = loopThroughJSON(data);
+            console.log("The page has been refreshed")
         });
     });
 
     setInterval(function() {
         $.get("/../data/inventory.json").done(function(data) {
             tableData.innerHTML = loopThroughJSON(data);
+            console.log("It's been 5 seconds")
         });
-    }, 5000)
+    }, 5000);
 
 </script>
 </body>
