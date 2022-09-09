@@ -10,7 +10,6 @@
 <body>
 
 <h1>My Tool Store</h1>
-
 <table id="products">
     <thead>
     <tr>
@@ -58,7 +57,14 @@
             return html;
         }
 
-
+        function loopThroughJSON(data) {
+            var html;
+            for (let i = 0; i < data.length; i++) {
+                html += appendToHtml(data[i]);
+            }
+            console.log(html)
+            return html;
+        }
 
         var tableData = document.querySelector("#insertProducts");
     })();
