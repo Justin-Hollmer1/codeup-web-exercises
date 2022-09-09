@@ -11,6 +11,8 @@
 
 <h1>My Tool Store</h1>
 
+<button id="get-new-data">Press Me</button>
+
 <table id="products">
     <thead>
     <tr>
@@ -31,7 +33,7 @@
         "use strict";
         // TODO: Create an AJAX GET request for the file under data/inventory.json
 
-        $.get("/../data/inventory.json").done(function(data) {
+        $.ajax("/../data/inventory.json").done(function(data) {
             console.log(data);
             tableData.innerHTML = loopThroughJSON(data);
         }).fail(function() {
@@ -62,8 +64,6 @@
             console.log(html)
             return html;
         }
-
-
 
         var tableData = document.querySelector("#insertProducts");
     })();
