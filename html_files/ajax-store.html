@@ -34,6 +34,8 @@
         "use strict";
         // TODO: Create an AJAX GET request for the file under data/inventory.json
 
+        var tableData = document.querySelector("#insertProducts");
+
         $.get("/../data/inventory.json").done(function(data) {
             console.log(data);
             tableData.innerHTML = loopThroughJSON(data);
@@ -58,15 +60,13 @@
         }
 
         function loopThroughJSON(data) {
-            var html;
+            var html = "";
             for (let i = 0; i < data.length; i++) {
                 html += appendToHtml(data[i]);
             }
             console.log(html)
             return html;
         }
-
-        var tableData = document.querySelector("#insertProducts");
     })();
 </script>
 </body>
