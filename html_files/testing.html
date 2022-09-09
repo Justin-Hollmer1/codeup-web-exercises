@@ -1,13 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>DOM Warm Up 2</title>
+    <style>
+        #hover-box {
+            background: blue;
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-<script src="../js/iterating.js"></script>
+<h1>Hello World</h1>
+<div id="hover-box"></div>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    "use strict";
+
+    // TODO: the text of the h1 should change to "Hello Haskell" when a user hovers over the #hover-box div. When not hovering over the #hover-box div, the text should read "Hello World"
+    $("#hover-box").hover(function() {
+        $("h1").html("Hello Haskell")
+    }, function() {
+        $("h1").html("Hello World")
+    });
+</script>
 </body>
 </html>
