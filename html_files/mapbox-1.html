@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>First Mapbox Map</title>
+    <!-- Mapbox CSS -->
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <!-- Custom CSS -->
+    <style>
+        #map {
+            /* the width and height may be set to any size */
+            width: 100%;
+            height: 700px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>My First Mapbox Map!</h1>
+
+<!-- The HTML element that serves as the Mapbox container -->
+<div id='map'></div>
+
+<button id="getCoordinates">Get Coordinates</button>
+
+<!-- Mapbox JS -->
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
+
+
+<script src="../js/keys.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<!-- Custom JS -->
+<script>
+    mapboxgl.accessToken = MAPBOX_TOKEN;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 9,
+        center: [-97, 33]
+    });
+
+    setTimeout(function() {
+        map.setCenter([-95.7129, 37.0902]);
+        map.setZoom(3);
+
+    }, 5000)
+
+
+    var theMapData = $.get("../data/map-data.json").done(function(data) {
+        console.log(data)
+    }).fail(function() {
+        console.log("Something went wrong.")
+    })
+
+    // $("#getCoordinates").click(function() {
+    //     ajax.post()("../data/map-data.json", {
+    //         "latitude": map.center,
+    //         "longitude": map.center
+    //     }).done(function(data) {
+    //
+    //     }).fail(function() {
+    //         console.log("Something went wrong")
+    //     })
+    //
+    //
+    //     $.get("../data/map-data.json").done(function(data) {
+    //         console.log(data)
+    //     }).fail(function() {
+    //         console.log("Something went wrong.")
+    //     })
+    // });
+
+</script>
+</body>
+</html>
