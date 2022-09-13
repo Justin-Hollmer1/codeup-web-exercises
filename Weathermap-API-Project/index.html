@@ -47,6 +47,16 @@
 
 
 
+
+    $.get("http://api.openweathermap.org/data/2.5/forecast", {
+        APPID: OPEN_WEATHER_APPID,
+        q: "Dallas, US",
+        units: "imperial"
+    }).done(function(data) {
+        console.log('The entire response:', data);
+    });
+
+
 </script>
 </body>
 </html>
