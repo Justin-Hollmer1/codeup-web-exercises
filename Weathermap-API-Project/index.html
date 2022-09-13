@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WeatherMap API Project</title>
+    <!-- Mapbox CSS -->
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        #map {
+            width: 100%;
+            height: 700px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Weathermap Project</h1>
+
+<div id="map"></div>
+
+
+
+<!--Jquery CDN-->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<!--Keys Link-->
+<script src="../js/keys.js"></script>
+<!--Mapbox JS-->
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
+<!--GeoCoding Link-->
+<script src="../js/mapbox-geocoder-utils.js"></script>
+
+<!--Main JS-->
+<script>
+    "use strict";
+
+    mapboxgl.accessToken = MAPBOX_TOKEN;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 10,
+        center: [-96.8, 33]
+    });
+
+
+
+</script>
+</body>
+</html>
