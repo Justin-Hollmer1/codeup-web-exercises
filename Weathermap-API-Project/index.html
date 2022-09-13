@@ -88,78 +88,7 @@
         <button type="submit" id="submit-button">Submit</button>
     </form>
 
-    <div id="content-surround">
-        <div class="content-box">
-            <div class="box-header">abcdefg</div>
-                <div class="box-data">
-                    temperature
-                    <hr>
-                    <span>Description</span>
-                    <hr>
-                    <span>Humidity</span>
-                    <hr>
-                    <span>Wind</span>
-                    <hr>
-                    <span>Pressure</span>
-                </div>
-        </div>
-        <div class="content-box">
-            <div class="box-header">abcdefg</div>
-            <div class="box-data">
-                temperature
-                <hr>
-                <span>Description</span>
-                <hr>
-                <span>Humidity</span>
-                <hr>
-                <span>Wind</span>
-                <hr>
-                <span>Pressure</span>
-            </div>
-        </div>
-        <div class="content-box">
-            <div class="box-header">abcdefg</div>
-            <div class="box-data">
-                temperature
-                <hr>
-                <span>Description</span>
-                <hr>
-                <span>Humidity</span>
-                <hr>
-                <span>Wind</span>
-                <hr>
-                <span>Pressure</span>
-            </div>
-        </div>
-        <div class="content-box">
-            <div class="box-header">abcdefg</div>
-            <div class="box-data">
-                temperature
-                <hr>
-                <span>Description</span>
-                <hr>
-                <span>Humidity</span>
-                <hr>
-                <span>Wind</span>
-                <hr>
-                <span>Pressure</span>
-            </div>
-        </div>
-        <div class="content-box">
-            <div class="box-header">abcdefg</div>
-            <div class="box-data">
-                <span>temperature</span>
-                <hr>
-                <span>Description</span>
-                <hr>
-                <span>Humidity</span>
-                <hr>
-                <span>Wind</span>
-                <hr>
-                <span>Pressure</span>
-            </div>
-        </div>
-    </div>
+    <div id="content-surround"></div>
 
     <div id="map"></div>
 </div>
@@ -191,21 +120,21 @@
 
     $("#submit-button").on("click", function(e) {
         e.preventDefault(); // Prevents it from refreshing
-
-        $.get("http://api.openweathermap.org/data/2.5/forecast", {
-            APPID: OPEN_WEATHER_APPID,
-            q: $("#place-selector").val(),
-            units: "imperial"
-        }).done(function(data) {
-            console.log('The entire response:', data);
-        });
+        $("#content-surround").html(dataToTable())
     });
 
+    // $.get("http://api.openweathermap.org/data/2.5/forecast", {
+    //     APPID: OPEN_WEATHER_APPID,
+    //     q: $("#place-selector").val(),
+    //     units: "imperial"
+    // }).done(function(data) {
+    //     console.log('The entire response:', data);
+    // });
 
     function convertToHTML(data) {
         let html = "";
         html += '<div class="content-box">';
-        html += '<div class="box-header">' + "the date" + '</div>';
+        html += '<div class="box-header">' + "test" + '</div>';
         html += '<div class="box-data">';
         html += '<span>' + "temperature" + "</span>" + '<hr>';
         html += '<span>' + "description" + "</span>" + '<hr>';
@@ -218,12 +147,12 @@
     function dataToTable(data) {
         let html = "";
         for (let i = 0; i < 5; i++) {
-            html += convertToHTML();
+            html += convertToHTML()
         }
         return html;
     }
 
-    $("#content-surround").html(dataToTable());
+    // $("#content-surround").html(dataToTable());
 
     // $.get("http://api.openweathermap.org/data/2.5/forecast", {
     //     APPID: OPEN_WEATHER_APPID,
