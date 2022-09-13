@@ -9,18 +9,91 @@
     <!-- Mapbox CSS -->
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
         #map {
             width: 100%;
             height: 700px;
+
+        }
+        header {
+            background-color: blue;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
+            padding: 0.5em;
+            color: white;
+            height: 2em;
+        }
+
+        #main {
+            margin: 1em;
+        }
+        #content-surround {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin: 1em 0em;
+            padding: 0;
+        }
+        .content-box {
+            width: 18%;
+            border: 1px solid grey;
+        }
+        .box-header {
+            background-color: grey;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            width: 100%;
+        }
+        .box-data {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        hr {
+            color: black;
+            width: 80%;
         }
     </style>
 </head>
 
 <body>
 
+<!--START OF THE HTML-->
+<header>
+    <h3>Weather App</h3>
+    <div>
+        <span>Current city: </span>
+        <span id="current-city">Dallas</span>
+    </div>
+</header>
+
+
+
+<div id="main">
     <h1>Weathermap Project</h1>
 
-<div id="map"></div>
+    <form>
+        <label for="place-selector">Place</label>
+        <input id="place-selector" name="place-selector" type="text">
+        <button type="submit" id="submit-button">Submit</button>
+    </form>
+
+    <div id="content-surround"></div>
+
+    <div id="map"></div>
+</div>
+<!--END OF THE HTML-->
+
 
 
 
@@ -45,6 +118,55 @@
         center: [-96.8, 33]
     });
 
+    $("#submit-button").on("click", function(e) {
+        e.preventDefault(); // Prevents it from refreshing
+
+        $.get("http://api.openweathermap.org/data/2.5/forecast", {
+            APPID: OPEN_WEATHER_APPID,
+            q: $("#place-selector").val(),
+            units: "imperial"
+        }).done(function(data) {
+            console.log('The entire response:', data.list);
+            $("#content-surround").html(dataToTable(data));
+
+        }).fail(function() {
+            console.log("Something went wrong");
+        });
+
+
+    });
+
+
+    function convertToHTML(data) {
+        let html = "";
+        html += '<div class="content-box">';
+        html += '<div class="box-header">' + data.dt_txt.substring(0, 10) + '</div>';
+        html += '<div class="box-data">';
+        html += '<span>' + "Temperature: " + data.main.temp + "</span>" + '<hr>';
+        html += '<span>' + "Description: " + data.weather[0].description + "</span>" + '<hr>';
+        html += '<span>' + "Humidity: " + data.main.humidity + "</span>" + '<hr>';
+        html += '<span>' + "Wind Speed: " + data.wind.speed + "</span>" + '<hr>';
+        html += '<span>' + "Pressure" + data.main.pressure + "</span></div></div>";
+        return html;
+    }
+
+    function dataToTable(data) {
+        let html = "";
+        for (let i = 0; i < data.list.length; i+=8) {
+            html += convertToHTML(data.list[i])
+        }
+        return html;
+    }
+
+    // $("#content-surround").html(dataToTable());
+
+    // $.get("http://api.openweathermap.org/data/2.5/forecast", {
+    //     APPID: OPEN_WEATHER_APPID,
+    //     q: "Dallas, US",
+    //     units: "imperial"
+    // }).done(function(data) {
+    //     console.log('The entire response:', data);
+    // });
 
 
 </script>
