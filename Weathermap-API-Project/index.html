@@ -132,8 +132,6 @@
         }).fail(function() {
             console.log("Something went wrong");
         });
-
-
     });
 
 
@@ -158,15 +156,13 @@
         return html;
     }
 
-    // $("#content-surround").html(dataToTable());
 
-    // $.get("http://api.openweathermap.org/data/2.5/forecast", {
-    //     APPID: OPEN_WEATHER_APPID,
-    //     q: "Dallas, US",
-    //     units: "imperial"
-    // }).done(function(data) {
-    //     console.log('The entire response:', data);
-    // });
+
+    $("#map").on("dblclick", function() {
+        geocode("301 Texas St, Dallas, Texas", MAPBOX_TOKEN).then(function(coordinates) {
+            console.log(coordinates);
+        })
+    })
 
 
 </script>
