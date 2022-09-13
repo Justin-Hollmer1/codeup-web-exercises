@@ -37,6 +37,31 @@
         #content-surround {
             display: flex;
             justify-content: space-between;
+            width: 100%;
+            margin: 1em 0em;
+            padding: 0;
+        }
+        .content-box {
+            width: 18%;
+            border: 1px solid grey;
+        }
+        .box-header {
+            background-color: grey;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            width: 100%;
+        }
+        .box-data {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        hr {
+            color: black;
+            width: 80%;
         }
     </style>
 </head>
@@ -64,7 +89,76 @@
     </form>
 
     <div id="content-surround">
-        <div class="content-box"></div>
+        <div class="content-box">
+            <div class="box-header">abcdefg</div>
+                <div class="box-data">
+                    temperature
+                    <hr>
+                    <span>Description</span>
+                    <hr>
+                    <span>Humidity</span>
+                    <hr>
+                    <span>Wind</span>
+                    <hr>
+                    <span>Pressure</span>
+                </div>
+        </div>
+        <div class="content-box">
+            <div class="box-header">abcdefg</div>
+            <div class="box-data">
+                temperature
+                <hr>
+                <span>Description</span>
+                <hr>
+                <span>Humidity</span>
+                <hr>
+                <span>Wind</span>
+                <hr>
+                <span>Pressure</span>
+            </div>
+        </div>
+        <div class="content-box">
+            <div class="box-header">abcdefg</div>
+            <div class="box-data">
+                temperature
+                <hr>
+                <span>Description</span>
+                <hr>
+                <span>Humidity</span>
+                <hr>
+                <span>Wind</span>
+                <hr>
+                <span>Pressure</span>
+            </div>
+        </div>
+        <div class="content-box">
+            <div class="box-header">abcdefg</div>
+            <div class="box-data">
+                temperature
+                <hr>
+                <span>Description</span>
+                <hr>
+                <span>Humidity</span>
+                <hr>
+                <span>Wind</span>
+                <hr>
+                <span>Pressure</span>
+            </div>
+        </div>
+        <div class="content-box">
+            <div class="box-header">abcdefg</div>
+            <div class="box-data">
+                temperature
+                <hr>
+                <span>Description</span>
+                <hr>
+                <span>Humidity</span>
+                <hr>
+                <span>Wind</span>
+                <hr>
+                <span>Pressure</span>
+            </div>
+        </div>
     </div>
 
     <div id="map"></div>
@@ -106,6 +200,12 @@
             console.log('The entire response:', data);
         });
     });
+
+
+    // function convertToHTML(data) {
+    //     let html = "";
+    //     html +=
+    // }
 
 
     // $.get("http://api.openweathermap.org/data/2.5/forecast", {
