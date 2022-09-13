@@ -120,16 +120,22 @@
 
     $("#submit-button").on("click", function(e) {
         e.preventDefault(); // Prevents it from refreshing
-        $("#content-surround").html(dataToTable())
+
+        $.get("http://api.openweathermap.org/data/2.5/forecast", {
+            APPID: OPEN_WEATHER_APPID,
+            q: $("#place-selector").val(),
+            units: "imperial"
+        }).done(function(data) {
+            console.log('The entire response:', data);
+            $("#content-surround").html(dataToTable(data));
+
+        }).fail(function() {
+            console.log("Something went wrong");
+        });
+
+
     });
 
-    // $.get("http://api.openweathermap.org/data/2.5/forecast", {
-    //     APPID: OPEN_WEATHER_APPID,
-    //     q: $("#place-selector").val(),
-    //     units: "imperial"
-    // }).done(function(data) {
-    //     console.log('The entire response:', data);
-    // });
 
     function convertToHTML(data) {
         let html = "";
