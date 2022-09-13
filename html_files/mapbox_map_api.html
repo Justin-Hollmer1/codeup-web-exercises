@@ -23,6 +23,8 @@
 <button id="zoom-to-5">Change zoom to 5</button>
 <button id="zoom-to-15">Change zoom to 15</button>
 <button id="zoom-to-20">Change zoom to 20</button>
+<button id="fortisNavigator">Navigate to fortis</button>
+
 
 <!-- Mapbox JS -->
 <script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
@@ -42,7 +44,7 @@
     var zoom5 = $("#zoom-to-5");
     var zoom15 = $("#zoom-to-15");
     var zoom20 = $("#zoom-to-20");
-
+    var fortisNavigator = $("#fortisNavigator");
 
     zoom5.on("click", function() {
         map.setZoom(5);
@@ -55,6 +57,25 @@
     zoom20.on("click", function() {
         map.setZoom(20);
     });
+
+
+    // fortisNavigator.on("click", function() {
+    //     geocode("301 Texas St, Dallas, Texas", "pk.eyJ1IjoianVzdGluLWhvbGxtZXIiLCJhIjoiY2w3djAxaTN6MDNxbTNvcjF1YmJjaHcxMiJ9.DksUW0mZy7Edktm3zpB9zg").then(function(result) {
+    //         console.log(result);
+    //         map.setCenter(result);
+    //         map.setZoom(18);
+    //     })
+    // })
+
+    $("#fortisNavigator").hover(function() {
+        $(this).css("background-color", "red");
+    }, function() {
+        $(this).css("background-color", "white")
+    })
+
+    // geocode("301 Texas St, Dallas, Texas", "pk.eyJ1IjoianVzdGluLWhvbGxtZXIiLCJhIjoiY2w3djAxaTN6MDNxbTNvcjF1YmJjaHcxMiJ9.DksUW0mZy7Edktm3zpB9zg").then(function(result) {
+    //     console.log(result)
+    // })
 
 
     // var popup = new mapboxgl.Popup()
