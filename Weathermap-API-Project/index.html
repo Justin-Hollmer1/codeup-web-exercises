@@ -126,7 +126,7 @@
             q: $("#place-selector").val(),
             units: "imperial"
         }).done(function(data) {
-            console.log('The entire response:', data);
+            console.log('The entire response:', data.list);
             $("#content-surround").html(dataToTable(data));
 
         }).fail(function() {
@@ -140,7 +140,7 @@
     function convertToHTML(data) {
         let html = "";
         html += '<div class="content-box">';
-        html += '<div class="box-header">' + "test" + '</div>';
+        html += '<div class="box-header">' + data.dt_txt + '</div>';
         html += '<div class="box-data">';
         html += '<span>' + "temperature" + "</span>" + '<hr>';
         html += '<span>' + "description" + "</span>" + '<hr>';
@@ -152,8 +152,8 @@
 
     function dataToTable(data) {
         let html = "";
-        for (let i = 0; i < 5; i++) {
-            html += convertToHTML()
+        for (let i = 0; i < data.list.length; i++) {
+            html += convertToHTML(data.list[i])
         }
         return html;
     }
