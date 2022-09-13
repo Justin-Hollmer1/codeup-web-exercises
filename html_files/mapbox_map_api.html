@@ -20,12 +20,15 @@
 
 <!-- The HTML element that serves as the Mapbox container -->
 <div id='map'></div>
+<button id="zoom-to-5">Change zoom to 5</button>
+<button id="zoom-to-15">Change zoom to 15</button>
+<button id="zoom-to-20">Change zoom to 20</button>
 
 <!-- Mapbox JS -->
 <script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
-
-
 <script src="../js/keys.js"></script>
+<script src="../js/mapbox-geocoder-utils.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <!-- Custom JS -->
 <script>
     mapboxgl.accessToken = MAPBOX_TOKEN;
@@ -33,8 +36,40 @@
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
         zoom: 10,
-        center: [-98.4916, 29.4252]
+        center: [-96.8, 33]
     });
+
+    var zoom5 = $("#zoom-to-5");
+    var zoom15 = $("#zoom-to-15");
+    var zoom20 = $("#zoom-to-20");
+
+
+    zoom5.on("click", function() {
+        map.setZoom(5);
+    });
+
+    zoom15.on("click", function() {
+        map.setZoom(15);
+    });
+
+    zoom20.on("click", function() {
+        map.setZoom(20);
+    });
+
+
+    // var popup = new mapboxgl.Popup()
+    //     .setLngLat([-98.489615, 29.426827])
+    //     .setHTML("<p>Codeup Rocks!</p>")
+    //     .addTo(map)
+    //
+    // var marker = new mapboxgl.Marker()
+    //     .setLngLat([-98.4916, 29.4260])
+    //     .addTo(map);
+    //
+    // var alamoPopup = new mapboxgl.Popup()
+    //     .setHTML("<p>Remember The Alamo!</p>")
+    //
+    // marker.setPopup(alamoPopup)
 </script>
 </body>
 </html>
