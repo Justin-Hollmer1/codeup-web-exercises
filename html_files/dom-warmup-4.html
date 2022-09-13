@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Warm Up 4</title>
+</head>
+<body>
+<main>
+    <div>
+        <label for="num-input-1">Num 1</label>
+        <input id="num-input-1" type="number" placeholder="Enter number here" value="0">
+        <label for="num-input-2">Num 2</label>
+        <input id="num-input-2" type="number" placeholder="Enter number here" value="0">
+        <button id="sum-btn">Sum</button>
+    </div>
+    <h1 id="output"></h1>
+</main>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    "use strict";
+
+    /*
+        TODO: When numbers are entered into the inputs and the sum button is clicked, the sum of the numbers should be
+          displayed in the output h1. The entered numbers should remain in the input fields after the sum button is clicked.
+          Assume only valid numbers will be entered.
+
+          OPTIONAL BONUS: if non-numeric inputs are in one or both the inputs, disable the sum button.
+     */
+
+
+    $("#sum-btn").on("click", function() {
+        var num1 = parseInt($("#num-input-1").val());
+        var num2 = parseInt($("#num-input-2").val());
+        console.log(num1)
+        console.log(num2)
+        $("h1").html(num1 + num2)
+    })
+
+
+</script>
+</body>
+</html>
