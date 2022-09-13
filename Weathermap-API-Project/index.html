@@ -148,7 +148,7 @@
         <div class="content-box">
             <div class="box-header">abcdefg</div>
             <div class="box-data">
-                temperature
+                <span>temperature</span>
                 <hr>
                 <span>Description</span>
                 <hr>
@@ -202,11 +202,28 @@
     });
 
 
-    // function convertToHTML(data) {
-    //     let html = "";
-    //     html +=
-    // }
+    function convertToHTML(data) {
+        let html = "";
+        html += '<div class="content-box">';
+        html += '<div class="box-header">' + "the date" + '</div>';
+        html += '<div class="box-data">';
+        html += '<span>' + "temperature" + "</span>" + '<hr>';
+        html += '<span>' + "description" + "</span>" + '<hr>';
+        html += '<span>' + "humidity" + "</span>" + '<hr>';
+        html += '<span>' + "wind" + "</span>" + '<hr>';
+        html += '<span>' + "pressure" + "</span></div></div>";
+        return html;
+    }
 
+    function dataToTable(data) {
+        let html = "";
+        for (let i = 0; i < 5; i++) {
+            html += convertToHTML();
+        }
+        return html;
+    }
+
+    $("#content-surround").html(dataToTable());
 
     // $.get("http://api.openweathermap.org/data/2.5/forecast", {
     //     APPID: OPEN_WEATHER_APPID,
