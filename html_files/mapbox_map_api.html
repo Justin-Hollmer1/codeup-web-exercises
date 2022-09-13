@@ -59,13 +59,13 @@
     });
 
 
-    // fortisNavigator.on("click", function() {
-    //     geocode("301 Texas St, Dallas, Texas", "pk.eyJ1IjoianVzdGluLWhvbGxtZXIiLCJhIjoiY2w3djAxaTN6MDNxbTNvcjF1YmJjaHcxMiJ9.DksUW0mZy7Edktm3zpB9zg").then(function(result) {
-    //         console.log(result);
-    //         map.setCenter(result);
-    //         map.setZoom(18);
-    //     })
-    // })
+    fortisNavigator.on("click", function() {
+        geocode("301 Texas St, Dallas, Texas", "pk.eyJ1IjoianVzdGluLWhvbGxtZXIiLCJhIjoiY2w3djAxaTN6MDNxbTNvcjF1YmJjaHcxMiJ9.DksUW0mZy7Edktm3zpB9zg").then(function(result) {
+            console.log(result);
+            map.setCenter(result);
+            map.setZoom(18);
+        })
+    })
 
     $("#fortisNavigator").hover(function() {
         $(this).css("background-color", "red");
