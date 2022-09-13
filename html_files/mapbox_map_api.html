@@ -20,10 +20,10 @@
 
 <!-- The HTML element that serves as the Mapbox container -->
 <div id='map'></div>
-<button id="zoom-to-5">Change zoom to 5</button>
-<button id="zoom-to-15">Change zoom to 15</button>
-<button id="zoom-to-20">Change zoom to 20</button>
-<button id="fortisNavigator">Navigate to fortis</button>
+<button class="button" id="zoom-to-5">Change zoom to 5</button>
+<button class="button" id="zoom-to-15">Change zoom to 15</button>
+<button class="button" id="zoom-to-20">Change zoom to 20</button>
+<button class="button" id="fortisNavigator">Navigate to fortis</button>
 
 
 <!-- Mapbox JS -->
@@ -60,18 +60,25 @@
 
 
     fortisNavigator.on("click", function() {
-        geocode("301 Texas St, Dallas, Texas", "pk.eyJ1IjoianVzdGluLWhvbGxtZXIiLCJhIjoiY2w3djAxaTN6MDNxbTNvcjF1YmJjaHcxMiJ9.DksUW0mZy7Edktm3zpB9zg").then(function(result) {
+        geocode("301 Texas St, Dallas, Texas", MAPBOX_TOKEN).then(function(result) {
             console.log(result);
             map.setCenter(result);
-            map.setZoom(18);
+            map.setZoom(16);
         })
     })
 
-    $("#fortisNavigator").hover(function() {
+    $(".button").hover(function() {
         $(this).css("background-color", "red");
     }, function() {
         $(this).css("background-color", "white")
     })
+
+    //TODO connect this file to a json file to let the user geocode and reverse geocode
+
+
+
+
+
 
     // geocode("301 Texas St, Dallas, Texas", "pk.eyJ1IjoianVzdGluLWhvbGxtZXIiLCJhIjoiY2w3djAxaTN6MDNxbTNvcjF1YmJjaHcxMiJ9.DksUW0mZy7Edktm3zpB9zg").then(function(result) {
     //     console.log(result)

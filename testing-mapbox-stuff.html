@@ -26,10 +26,11 @@
 
 <!-- Mapbox Geocoder Util Methods -->
 <script src="js/mapbox-geocoder-utils.js"></script>
+<script src="js/keys.js"></script>
 
 <!-- Custom JS -->
 <script>
-    mapboxgl.accessToken = "pk.eyJ1IjoianVzdGluLWhvbGxtZXIiLCJhIjoiY2w3djAxaTN6MDNxbTNvcjF1YmJjaHcxMiJ9.DksUW0mZy7Edktm3zpB9zg";
+    mapboxgl.accessToken = MAPBOX_TOKEN;
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
@@ -38,7 +39,7 @@
     });
 
     // the  geocode method from mapbox-geocoder-utils.js
-    geocode("600 Navarro St #350, San Antonio, TX 78205", "pk.eyJ1IjoianVzdGluLWhvbGxtZXIiLCJhIjoiY2w3djAxaTN6MDNxbTNvcjF1YmJjaHcxMiJ9.DksUW0mZy7Edktm3zpB9zg").then(function(result) {
+    geocode("600 Navarro St #350, San Antonio, TX 78205", MAPBOX_TOKEN).then(function(result) {
         console.log(result);
         map.setCenter(result);
         map.setZoom(20);
