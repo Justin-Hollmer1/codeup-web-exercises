@@ -140,19 +140,19 @@
     function convertToHTML(data) {
         let html = "";
         html += '<div class="content-box">';
-        html += '<div class="box-header">' + data.dt_txt + '</div>';
+        html += '<div class="box-header">' + data.dt_txt.substring(0, 10) + '</div>';
         html += '<div class="box-data">';
-        html += '<span>' + "temperature" + "</span>" + '<hr>';
-        html += '<span>' + "description" + "</span>" + '<hr>';
-        html += '<span>' + "humidity" + "</span>" + '<hr>';
-        html += '<span>' + "wind" + "</span>" + '<hr>';
-        html += '<span>' + "pressure" + "</span></div></div>";
+        html += '<span>' + "Temperature: " + data.main.temp + "</span>" + '<hr>';
+        html += '<span>' + "Description: " + data.weather[0].description + "</span>" + '<hr>';
+        html += '<span>' + "Humidity: " + data.main.humidity + "</span>" + '<hr>';
+        html += '<span>' + "Wind Speed: " + data.wind.speed + "</span>" + '<hr>';
+        html += '<span>' + "Pressure" + data.main.pressure + "</span></div></div>";
         return html;
     }
 
     function dataToTable(data) {
         let html = "";
-        for (let i = 0; i < data.list.length; i++) {
+        for (let i = 0; i < data.list.length; i+=8) {
             html += convertToHTML(data.list[i])
         }
         return html;
