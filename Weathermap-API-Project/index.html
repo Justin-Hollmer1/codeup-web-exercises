@@ -58,6 +58,7 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
+            margin: 0.65em 0em;
         }
         .box-data > * {
             text-align: left;
@@ -124,7 +125,19 @@
     });
 
 
-    $("#submit-button").on("click", function(e) {
+    var submitButton = $("#submit-button");
+
+    // console.log(document.querySelector("#current-city").innerHTML)
+    //
+    // submitButton.on("click", function(e){
+    //     e.preventDefault();
+    //     console.log(document.querySelector("#current-city").innerHTML)
+    //     $("#current-city").html($("#place-selector").text());
+    //     console.log(document.querySelector("#current-city").innerHTML)
+    // });
+
+
+    submitButton.on("click", function(e) {
         e.preventDefault(); // Prevents it from refreshing
 
         $.get("http://api.openweathermap.org/data/2.5/forecast", {
@@ -147,7 +160,7 @@
         html += '<div class="box-header">' + data.dt_txt.substring(0, 10) + '</div>';
         html += '<div class="box-data">';
         html += '<span>' + "Temperature: " + data.main.temp + "</span>" + '<hr>';
-        html += '<span>' + "Description: " + data.weather[0].description + "</span>" + '<hr>';
+        html += '<span>' + "Description: " + "<br>" + data.weather[0].description + "</span>" + '<hr>';
         html += '<span>' + "Humidity: " + data.main.humidity + "</span>" + '<hr>';
         html += '<span>' + "Wind Speed: " + data.wind.speed + "</span>" + '<hr>';
         html += '<span>' + "Pressure: " + data.main.pressure + "</span></div></div>";
@@ -171,9 +184,6 @@
         console.log(JSON.stringify(e.lngLat.wrap()));
         JSON.stringify(e.lngLat.wrap());
     });
-</script>
-
-
 </script>
 </body>
 </html>
