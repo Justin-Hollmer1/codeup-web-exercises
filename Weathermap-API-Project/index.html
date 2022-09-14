@@ -98,6 +98,8 @@
     <div id="map"></div>
     <p>New Feature Working: Display weather data of clicked location</p>
 </div>
+
+<button id="remove-all-markers">Clear all markers</button>
 <!--END OF THE HTML-->
 
 
@@ -126,6 +128,7 @@
 
 
     var submitButton = $("#submit-button");
+    var removeMarkers = $("#remove-all-markers");
 
     // console.log(document.querySelector("#current-city").innerHTML)
     //
@@ -185,17 +188,29 @@
 
 
 
-    var mousePosition = map.on('click', (e) => {
+    map.on('click', (e) => {
         // console.log(JSON.stringify(e.lngLat.wrap()));
-        let coordinates = JSON.stringify(e.lngLat.wrap());
+        var coordinates = JSON.stringify(e.lngLat.wrap());
         console.log(coordinates)
-        return coordinates
+        console.log(typeof coordinates)
+        coordinates = JSON.parse(coordinates)
+        console.log(typeof coordinates)
+        console.log(coordinates)
+        var marker = new mapboxgl.Marker()
+            .setLngLat(coordinates)
+            .addTo(map);
+
+
+        //Add a button to remove markers
+
+
+
+        return coordinates;
         // var marker = new mapboxgl.Marker().setLngLat({lng:-94.75750508315764,lat:34.73915264764747}).addTo(map);
+
+
     });
 
-    map.on("dblclick", function(e) {
-        console.log(mousePosition);
-    })
 
 
 </script>
