@@ -17,7 +17,7 @@
         }
         #map {
             width: 100%;
-            height: 700px;
+            height: 450px;
 
         }
         header {
@@ -46,7 +46,7 @@
             border: 1px solid grey;
         }
         .box-header {
-            background-color: grey;
+            background-color: RGBA(128, 128, 128, 0.3);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -56,8 +56,13 @@
         .box-data {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin: 0.65em 0em;
+        }
+        .box-data > * {
+            text-align: left;
+            margin: 0.5em 1em;
         }
         hr {
             color: black;
@@ -91,6 +96,7 @@
     <div id="content-surround"></div>
 
     <div id="map"></div>
+    <p>New Feature Working: Display weather data of clicked location</p>
 </div>
 <!--END OF THE HTML-->
 
@@ -118,7 +124,20 @@
         center: [-96.8, 33]
     });
 
-    $("#submit-button").on("click", function(e) {
+
+    var submitButton = $("#submit-button");
+
+    // console.log(document.querySelector("#current-city").innerHTML)
+    //
+    // submitButton.on("click", function(e){
+    //     e.preventDefault();
+    //     console.log(document.querySelector("#current-city").innerHTML)
+    //     $("#current-city").html($("#place-selector").text());
+    //     console.log(document.querySelector("#current-city").innerHTML)
+    // });
+
+
+    submitButton.on("click", function(e) {
         e.preventDefault(); // Prevents it from refreshing
 
         $.get("http://api.openweathermap.org/data/2.5/forecast", {
@@ -127,7 +146,7 @@
             units: "imperial"
         }).done(function(data) {
             console.log('The entire response:', data.list);
-            $("#content-surround").html(dataToTable(data));
+            $("#content-surround").html(dataToTable(data))
 
         }).fail(function() {
             console.log("Something went wrong");
@@ -141,10 +160,10 @@
         html += '<div class="box-header">' + data.dt_txt.substring(0, 10) + '</div>';
         html += '<div class="box-data">';
         html += '<span>' + "Temperature: " + data.main.temp + "</span>" + '<hr>';
-        html += '<span>' + "Description: " + data.weather[0].description + "</span>" + '<hr>';
+        html += '<span>' + "Description: " + "<br>" + data.weather[0].description + "</span>" + '<hr>';
         html += '<span>' + "Humidity: " + data.main.humidity + "</span>" + '<hr>';
         html += '<span>' + "Wind Speed: " + data.wind.speed + "</span>" + '<hr>';
-        html += '<span>' + "Pressure" + data.main.pressure + "</span></div></div>";
+        html += '<span>' + "Pressure: " + data.main.pressure + "</span></div></div>";
         return html;
     }
 
@@ -158,13 +177,13 @@
 
 
 
-    $("#map").on("dblclick", function() {
-        geocode("301 Texas St, Dallas, Texas", MAPBOX_TOKEN).then(function(coordinates) {
-            console.log(coordinates);
-        })
-    })
 
 
+
+    map.on('click', (e) => {
+        console.log(JSON.stringify(e.lngLat.wrap()));
+        JSON.stringify(e.lngLat.wrap());
+    });
 </script>
 </body>
 </html>
