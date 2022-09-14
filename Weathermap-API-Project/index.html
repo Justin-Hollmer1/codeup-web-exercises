@@ -179,11 +179,25 @@
 
 
 
+    // function getCoordinates() {
+    //
+    // }
 
-    map.on('click', (e) => {
-        console.log(JSON.stringify(e.lngLat.wrap()));
-        JSON.stringify(e.lngLat.wrap());
+
+
+    var mousePosition = map.on('click', (e) => {
+        // console.log(JSON.stringify(e.lngLat.wrap()));
+        let coordinates = JSON.stringify(e.lngLat.wrap());
+        console.log(coordinates)
+        return coordinates
+        // var marker = new mapboxgl.Marker().setLngLat({lng:-94.75750508315764,lat:34.73915264764747}).addTo(map);
     });
+
+    map.on("dblclick", function(e) {
+        console.log(mousePosition);
+    })
+
+
 </script>
 </body>
 </html>
