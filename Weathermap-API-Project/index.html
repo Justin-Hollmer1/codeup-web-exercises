@@ -96,7 +96,6 @@
     <div id="content-surround"></div>
 
     <div id="map"></div>
-    <p>New Feature Working: Display weather data of clicked location</p>
 </div>
 
 <button id="remove-all-markers">Clear all markers</button>
@@ -132,6 +131,7 @@
     var removeMarkers = $("#remove-all-markers");
     var testButton = $("#testing-button");
     var placeSelector = $("#place-selector");
+    var currentCity = $("#current-city");
 
     // console.log(document.querySelector("#current-city").innerHTML)
     //
@@ -141,6 +141,8 @@
     //     $("#current-city").html($("#place-selector").text());
     //     console.log(document.querySelector("#current-city").innerHTML)
     // });
+
+    var placeHolder = placeSelector.val()
 
 
     submitButton.on("click", function(e) {
@@ -153,6 +155,7 @@
         }).done(function(data) {
             console.log('The entire response:', data.list);
             $("#content-surround").html(dataToTable(data))
+            console.log(placeHolder)
 
         }).fail(function() {
             console.log("Something went wrong");
@@ -183,7 +186,8 @@
 
 
 
-
+    var markerCounter = 0;
+    var markerArray = []
     map.on('click', (e) => {
         // console.log(JSON.stringify(e.lngLat.wrap()));
 
@@ -192,19 +196,23 @@
         var marker = new mapboxgl.Marker()
             .setLngLat(coordinates)
             .addTo(map);
+            markerCounter += 1
+            markerArray.push(marker);
+        if (markerArray.length > 0) {
+            for (let i = 0; i < markerArray.length - 1; i++) {
+                markerArray[i].remove()
+            }
+        }
 
-        //To Reverse Geocode for Cities
-
+        //START OF GEOCODING BY CITY
         var actualCity;
         reverseGeocodeCity(coordinates, MAPBOX_TOKEN).then(function(result) {
             console.log(result)
             actualCity = result
             placeSelector.val(actualCity);
+            currentCity.html(actualCity)
         })
         console.log(actualCity)
-
-
-        // $("#place-selector").html(actualCity)
 
         setTimeout(function() {
             $.get("http://api.openweathermap.org/data/2.5/forecast", {
@@ -219,13 +227,24 @@
                 console.log("Something went wrong");
             });
         }, 1000)
-
+        // END OF GEOCODING BY CITY
 
         return coordinates;
     });
 
+    $(".btn, .message")
+
+
+
+
+
+
+
+
+
     testButton.on("click", function(e) {
-        placeSelector.val("Test")
+        console.log(markerCounter)
+        console.log(markerArray)
         console.log("test complete")
     });
 
