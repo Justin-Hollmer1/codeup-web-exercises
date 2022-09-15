@@ -182,14 +182,20 @@
 
 
 
+
     // function getCoordinates() {
     //
     // }
 
-
+    var markerCount = 0;
 
     map.on('click', (e) => {
         // console.log(JSON.stringify(e.lngLat.wrap()));
+
+        //Set array to track all marker locations
+
+
+
         var coordinates = JSON.stringify(e.lngLat.wrap());
         console.log(coordinates)
         console.log(typeof coordinates)
@@ -199,7 +205,13 @@
         var marker = new mapboxgl.Marker()
             .setLngLat(coordinates)
             .addTo(map);
+        markerCount += 1;
 
+        //Function to log data for where the marker is
+
+        // array.push(coordinates);
+        // console.log(array);
+        // if ()
 
         //Add a button to remove markers
 
@@ -207,9 +219,17 @@
 
         return coordinates;
         // var marker = new mapboxgl.Marker().setLngLat({lng:-94.75750508315764,lat:34.73915264764747}).addTo(map);
-
-
     });
+
+    removeMarkers.on("click", function() {
+        for (let i = 0; i < markerCount; i++) {
+            console.log("Marker " + i);
+
+        }
+    })
+
+
+
 
 
 
