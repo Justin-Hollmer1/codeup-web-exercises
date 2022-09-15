@@ -187,46 +187,43 @@
     //
     // }
 
-    var markerCount = 0;
+
 
     map.on('click', (e) => {
         // console.log(JSON.stringify(e.lngLat.wrap()));
 
-        //Set array to track all marker locations
-
-
-
         var coordinates = JSON.stringify(e.lngLat.wrap());
-        console.log(coordinates)
-        console.log(typeof coordinates)
         coordinates = JSON.parse(coordinates)
-        console.log(typeof coordinates)
-        console.log(coordinates)
         var marker = new mapboxgl.Marker()
             .setLngLat(coordinates)
             .addTo(map);
-        markerCount += 1;
 
-        //Function to log data for where the marker is
+        //To Reverse Geocode for Cities
 
-        // array.push(coordinates);
-        // console.log(array);
-        // if ()
+        var actualCity;
+        reverseGeocodeCity(coordinates, MAPBOX_TOKEN).then(function(result) {
+            console.log(result)
+            actualCity = result
+        })
+        console.log(actualCity)
 
-        //Add a button to remove markers
+        $("#place-selector").html(actualCity)
 
+        // $.get("http://api.openweathermap.org/data/2.5/forecast", {
+        //     APPID: OPEN_WEATHER_APPID,
+        //     q: $("#place-selector"),
+        //     units: "imperial"
+        // }).done(function(data) {
+        //     console.log('The entire response:', data.list);
+        //     $("#content-surround").html(dataToTable(data))
+        //
+        // }).fail(function() {
+        //     console.log("Something went wrong");
+        // });
 
 
         return coordinates;
-        // var marker = new mapboxgl.Marker().setLngLat({lng:-94.75750508315764,lat:34.73915264764747}).addTo(map);
     });
-
-    removeMarkers.on("click", function() {
-        for (let i = 0; i < markerCount; i++) {
-            console.log("Marker " + i);
-
-        }
-    })
 
 
 
