@@ -100,6 +100,7 @@
 </div>
 
 <button id="remove-all-markers">Clear all markers</button>
+<button id="testing-button">RUN TEST</button>
 <!--END OF THE HTML-->
 
 
@@ -129,6 +130,8 @@
 
     var submitButton = $("#submit-button");
     var removeMarkers = $("#remove-all-markers");
+    var testButton = $("#testing-button");
+    var placeSelector = $("#place-selector");
 
     // console.log(document.querySelector("#current-city").innerHTML)
     //
@@ -181,14 +184,6 @@
 
 
 
-
-
-    // function getCoordinates() {
-    //
-    // }
-
-
-
     map.on('click', (e) => {
         // console.log(JSON.stringify(e.lngLat.wrap()));
 
@@ -204,28 +199,35 @@
         reverseGeocodeCity(coordinates, MAPBOX_TOKEN).then(function(result) {
             console.log(result)
             actualCity = result
+            placeSelector.val(actualCity);
         })
         console.log(actualCity)
 
-        $("#place-selector").html(actualCity)
 
-        // $.get("http://api.openweathermap.org/data/2.5/forecast", {
-        //     APPID: OPEN_WEATHER_APPID,
-        //     q: $("#place-selector"),
-        //     units: "imperial"
-        // }).done(function(data) {
-        //     console.log('The entire response:', data.list);
-        //     $("#content-surround").html(dataToTable(data))
-        //
-        // }).fail(function() {
-        //     console.log("Something went wrong");
-        // });
+        // $("#place-selector").html(actualCity)
+
+        setTimeout(function() {
+            $.get("http://api.openweathermap.org/data/2.5/forecast", {
+                APPID: OPEN_WEATHER_APPID,
+                q: actualCity,
+                units: "imperial"
+            }).done(function(data) {
+                console.log('The entire response:', data.list);
+                $("#content-surround").html(dataToTable(data))
+
+            }).fail(function() {
+                console.log("Something went wrong");
+            });
+        }, 1000)
 
 
         return coordinates;
     });
 
-
+    testButton.on("click", function(e) {
+        placeSelector.val("Test")
+        console.log("test complete")
+    });
 
 
 
