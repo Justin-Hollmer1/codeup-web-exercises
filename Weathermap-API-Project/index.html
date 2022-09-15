@@ -96,7 +96,6 @@
     <div id="content-surround"></div>
 
     <div id="map"></div>
-    <p>New Feature Working: Display weather data of clicked location</p>
 </div>
 
 <button id="remove-all-markers">Clear all markers</button>
@@ -132,6 +131,7 @@
     var removeMarkers = $("#remove-all-markers");
     var testButton = $("#testing-button");
     var placeSelector = $("#place-selector");
+    var currentCity = $("#current-city");
 
     // console.log(document.querySelector("#current-city").innerHTML)
     //
@@ -210,6 +210,7 @@
             console.log(result)
             actualCity = result
             placeSelector.val(actualCity);
+            currentCity.html(actualCity)
         })
         console.log(actualCity)
 
