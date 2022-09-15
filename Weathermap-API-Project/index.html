@@ -98,6 +98,9 @@
     <div id="map"></div>
     <p>New Feature Working: Display weather data of clicked location</p>
 </div>
+
+<button id="remove-all-markers">Clear all markers</button>
+<button id="testing-button">RUN TEST</button>
 <!--END OF THE HTML-->
 
 
@@ -126,6 +129,9 @@
 
 
     var submitButton = $("#submit-button");
+    var removeMarkers = $("#remove-all-markers");
+    var testButton = $("#testing-button");
+    var placeSelector = $("#place-selector");
 
     // console.log(document.querySelector("#current-city").innerHTML)
     //
@@ -178,12 +184,54 @@
 
 
 
-
-
     map.on('click', (e) => {
-        console.log(JSON.stringify(e.lngLat.wrap()));
-        JSON.stringify(e.lngLat.wrap());
+        // console.log(JSON.stringify(e.lngLat.wrap()));
+
+        var coordinates = JSON.stringify(e.lngLat.wrap());
+        coordinates = JSON.parse(coordinates)
+        var marker = new mapboxgl.Marker()
+            .setLngLat(coordinates)
+            .addTo(map);
+
+        //To Reverse Geocode for Cities
+
+        var actualCity;
+        reverseGeocodeCity(coordinates, MAPBOX_TOKEN).then(function(result) {
+            console.log(result)
+            actualCity = result
+            placeSelector.val(actualCity);
+        })
+        console.log(actualCity)
+
+
+        // $("#place-selector").html(actualCity)
+
+        setTimeout(function() {
+            $.get("http://api.openweathermap.org/data/2.5/forecast", {
+                APPID: OPEN_WEATHER_APPID,
+                q: actualCity,
+                units: "imperial"
+            }).done(function(data) {
+                console.log('The entire response:', data.list);
+                $("#content-surround").html(dataToTable(data))
+
+            }).fail(function() {
+                console.log("Something went wrong");
+            });
+        }, 1000)
+
+
+        return coordinates;
     });
+
+    testButton.on("click", function(e) {
+        placeSelector.val("Test")
+        console.log("test complete")
+    });
+
+
+
+
 </script>
 </body>
 </html>
