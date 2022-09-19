@@ -98,7 +98,6 @@
     <div id="map"></div>
 </div>
 
-<button id="remove-all-markers">Clear all markers</button>
 <button id="testing-button">RUN TEST</button>
 <!--END OF THE HTML-->
 
@@ -128,7 +127,6 @@
 
 
     var submitButton = $("#submit-button");
-    var removeMarkers = $("#remove-all-markers");
     var testButton = $("#testing-button");
     var placeSelector = $("#place-selector");
     var currentCity = $("#current-city");
@@ -243,8 +241,7 @@
 
 
     testButton.on("click", function(e) {
-        console.log(markerCounter)
-        console.log(markerArray)
+
         console.log("test complete")
     });
 
