@@ -37,3 +37,29 @@ const users = [
         yearsOfExperience: 9
     }
 ];
+
+
+const usersWithMoreThanThreeLanguages = users.filter(user => user.languages.length >= 3);
+console.log(usersWithMoreThanThreeLanguages);
+
+const usersEmails = users.map(user => user.email);
+console.log(usersEmails)
+
+const totalYearsOfExperience = users.reduce((totalYears, user) => {
+    return totalYears += user.yearsOfExperience;
+}, 0);
+console.log(totalYearsOfExperience);
+
+const longestEmail = users.reduce((longestString, user) => {
+    if (user.email.length > longestString.length) {
+        longestString = user.email
+    }
+    return longestString
+}, "");
+console.log(longestEmail);
+
+const instructorNames = users.reduce((instructorList, user) => {
+    instructorList += user.name + ", ";
+    return instructorList;
+}, "");
+console.log("Your instructors are: " + instructorNames.slice(0, -2));
