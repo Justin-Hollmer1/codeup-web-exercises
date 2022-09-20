@@ -17,11 +17,11 @@ button.addEventListener("click", () => {
             let dateTimeHour = user[0].created_at.substring(11, 13);
 
             if (dateTimeHour > 12) {
-                let date = `${dateDay}/${dateMonth}/${dateYear} at ${dateTimeHour - 12}:${dateTime.substring(3, 8)}PM`;
+                let date = `${dateMonth}/${dateDay}/${dateYear} at ${dateTimeHour - 12}:${dateTime.substring(3, 8)}PM`;
                 result.innerHTML = `Last commit made on: ${date}`;
             }
             else {
-                let date = `${dateDay}/${dateMonth}/${dateYear}`
+                let date = `${dateMonth}/${dateDay}/${dateYear}`
                 result.innerHTML = `Last commit made on: ${date} at ${dateTime}AM`;
             }
         })
