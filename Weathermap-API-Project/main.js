@@ -10,7 +10,6 @@ var map = new mapboxgl.Map({
 
 
 var submitButton = $("#submit-button");
-var testButton = $("#testing-button");
 var placeSelector = $("#place-selector");
 var currentCity = $("#current-city");
 
