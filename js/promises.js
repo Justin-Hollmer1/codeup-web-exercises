@@ -28,3 +28,17 @@ button.addEventListener("click", () => {
     })
 });
 
+const wait = ms => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (typeof ms === "number") {
+                console.log("You'll see this after " + ms/1000 + " seconds.")
+            }
+            else {
+                console.log("Please enter a number")
+            }
+        }, ms)
+    })
+}
+
+wait(5000).then();
